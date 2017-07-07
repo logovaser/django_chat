@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>djANGular SPA</title>
+    <base href="/">
+</head>
+<body ng-app="myApp">
+
+<header>
+    <div class="header-item">Heading</div>
+</header>
+
+<ui-view></ui-view>
+
+<footer ng-controller="headerCtrl">
+    <a ui-sref="home" class="footer-item"><img src="{% static 'chat/house.svg' %}"></a>
+    <a ui-sref="cameraTest" class="footer-item"><img src="{% static 'chat/photo-camera.svg' %}"></a>
+    <a ui-sref="cabinet" class="footer-item"><img src="{% static 'chat/avatar.svg' %}"></a>
+</footer>
+
+<script src="{% static 'main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<div class="video-container">
+    <video autoplay></video>
+</div>
+<button type="button"
+        ng-show="settings.changeSourceBtn"
+        ng-click="changeSource()">
+    Change source
+</button>
+<select ng-model="selectedVideoSource" ng-show="settings.chooseSourceBtn">
+    <option ng-repeat="deviceInfo in deviceInfos" ng-value="deviceInfo">{{ deviceInfo.label }}</option>
+</select>

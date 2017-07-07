@@ -1,0 +1,19 @@
+camera {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+
+  .video-container {
+    flex-grow: 1;
+    display: flex;
+    position: relative;
+    height: 100%;
+
+    video {
+      flex-grow: 1;
+      min-height: 0;
+      min-width: 0;
+    }
+  }
+}

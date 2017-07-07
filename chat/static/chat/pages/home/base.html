@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+        <div ng-repeat="tile in tiles track by tile.id" class="col-xs-12 col-sm-6">
+            <tile heading="{{tile.heading}}" text="{{tile.text}}" type="{{tile.type}}"
+                  ng-style="tile.style"
+                  drag-start="onTileDragStart(tile, $event)" ng-click="tileClick(tile, $event)"></tile>
+        </div>
+    </div>
+    <tile heading="{{draggedTile.heading}}" text="{{draggedTile.text}}" type="{{draggedTile.type}}"
+          ng-style="draggedTile.style" ng-class="draggedTile.style.className"
+          ng-hide="equals(draggedTile, {})"></tile>
+</div>

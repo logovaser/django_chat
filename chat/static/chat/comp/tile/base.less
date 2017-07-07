@@ -1,0 +1,56 @@
+@import "../../mixin/_colors";
+
+tile {
+  display: block;
+  margin-bottom: 20px;
+
+  .tile() {
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .tile-default {
+    .tile();
+    padding: 20px;
+
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px 0;
+  }
+
+  .tile-empty {
+    .tile();
+    display: flex;
+    border: 3px solid @colDarkGray;
+    color: @colDarkGray;
+
+    &:hover {
+      @col: darken(@colDarkGray, 10%);
+      border-color: @col;
+      color: @col;
+    }
+
+    &:active {
+      @col: darken(@colDarkGray, 20%);
+      border-color: @col;
+      color: @col;
+    }
+
+    .glyphicon-plus {
+      margin: auto;
+      font-size: 36px;
+    }
+  }
+
+  .tile-heading {
+    display: flex;
+
+    h2 {
+      flex: 1;
+      margin: 0;
+    }
+
+    .btn {
+      margin: 0;
+    }
+  }
+}

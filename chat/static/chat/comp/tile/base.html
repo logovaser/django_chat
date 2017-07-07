@@ -1,0 +1,12 @@
+<div class="tile-empty" ng-show="$ctrl.type === 'empty'" ng-click="$ctrl.addTileClick()">
+    <div class="glyphicon glyphicon-plus"></div>
+</div>
+<div class="tile-default" ng-hide="$ctrl.type === 'empty'">
+    <div class="tile-heading">
+        <h2 ng-bind="$ctrl.heading"></h2>
+        <button type="button" class="btn" ng-click="$ctrl.dragStart({$event})">
+            <span class="glyphicon glyphicon-move"></span>
+        </button>
+    </div>
+    <div class="card-text" ng-bind="$ctrl.text"></div>
+</div>

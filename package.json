@@ -1,0 +1,33 @@
+{
+  "name": "app",
+  "version": "0.0.1",
+  "description": "app",
+  "author": "Artem Prudnikov",
+  "contributors": [
+    {
+      "name": "Artem Prudnikov",
+      "email": "logovaser@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "@uirouter/angularjs": "latest",
+    "angular": "latest",
+    "angular-cookies": "latest",
+    "angular-i18n": "latest",
+    "angular-ui-bootstrap": "latest",
+    "bootstrap": "3.3.7",
+    "bootstrap-material-design": "latest",
+    "oclazyload": "latest"
+  },
+  "devDependencies": {
+    "bundle-loader": "latest",
+    "css-loader": "latest",
+    "file-loader": "latest",
+    "less": "latest",
+    "less-loader": "latest",
+    "html-minify-loader": "latest",
+    "raw-loader": "latest",
+    "style-loader": "latest",
+    "webpack": "latest"
+  }
+}
