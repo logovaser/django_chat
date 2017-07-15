@@ -30,3 +30,24 @@ def register(request):
     post = json.loads(request.body)
     user = User.objects.create_user(username=post['login'], password=post['password'])
     return JsonResponse({'type': 'success'})
+
+
+def chats(request):
+    return JsonResponse({
+        'chats': [
+            {'id': '1', 'text': 'test'},
+            {'id': '2', 'text': 'test1'},
+            {'id': '3', 'text': 'test2'},
+        ]
+    })
+
+
+def messages(request):
+    # post = json.loads(request.body)
+    return JsonResponse({
+        'messages': [
+            {'id': '1', 'text': 'message 1'},
+            {'id': '2', 'text': 'message 2'},
+            {'id': '3', 'text': 'message 3'},
+        ]
+    })

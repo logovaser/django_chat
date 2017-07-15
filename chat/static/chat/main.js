@@ -12,6 +12,7 @@ import ngCookies from 'angular-cookies'
 import ocLazyLoad from 'oclazyload/dist/modules/ocLazyLoad.core'
 import 'oclazyload/dist/modules/ocLazyLoad.loaders.core'
 
+import messagesFactory from './messagesFactory'
 import userFactory from './userFactory'
 import Routes from './routes'
 import httpCsrfInterceptor from './httpCsrfInterceptor'
@@ -23,10 +24,12 @@ app.config(['$compileProvider', '$stateProvider', '$locationProvider', '$httpPro
         $location.hashPrefix('');
         $location.html5Mode(true);
         $compile.debugInfoEnabled(false);
-        Routes($compile, $state);
+        window.$compileProvider = $compile;
+        Routes($state);
         httpCsrfInterceptor($http);
     }]);
 
+app.factory('messagesFactory', messagesFactory);
 app.factory('userFactory', userFactory);
 
 app.controller('headerCtrl', ['$scope', function ($scope) {

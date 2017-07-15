@@ -4,6 +4,6 @@
 
 import template from './base.html'
 
-export default function cameraTestPage($compileProvider) {
-    $compileProvider.component('cameraTestPage', {template});
+export default function cameraTestPage() {
+    window.$compileProvider.component('cameraTestPage', {template});
 }

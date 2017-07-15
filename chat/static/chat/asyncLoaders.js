@@ -35,13 +35,13 @@ export function regModuleAsync(load) {
     })]
 }
 
-export function regComponentAsync($compileProvider, load) {
+export function regComponentAsync(load) {
     return ['$q', $q => $q(res => {
         load(data => {
             let name = data.default.name;
             if (!registeredNames.includes(name)) {
                 registeredNames.push(name);
-                data.default($compileProvider);
+                data.default();
             }
             res()
         });

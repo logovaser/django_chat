@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^register/$', views.index),
     url(r'^cabinet/$', views.index),
     url(r'^camera_test/$', views.index),
+    url(r'^mail/$', views.index),
 ]

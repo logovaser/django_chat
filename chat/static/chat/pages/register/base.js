@@ -5,6 +5,6 @@
 import template from './base.html'
 import controller from './ctrl'
 
-export default function registerPage($compileProvider) {
-    $compileProvider.component('registerPage', {template, controller});
+export default function registerPage() {
+    window.$compileProvider.component('registerPage', {template, controller});
 }

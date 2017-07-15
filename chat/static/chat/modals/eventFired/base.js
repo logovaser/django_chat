@@ -4,9 +4,9 @@
 
 import template from './base.html'
 
-export default function eventFired($compileProvider) {
+export default function eventFired() {
 
-    $compileProvider.component('eventFired', {
+    window.$compileProvider.component('eventFired', {
         bindings: {
             resolve: '<',
         },

@@ -5,31 +5,31 @@
 import {regComponentAsync, regModuleAsync} from './asyncLoaders'
 import {redirectToLoginIfNotAuth} from './redirects'
 
-export default function ($compileProvider, $stateProvider) {
+export default function ($stateProvider) {
     $stateProvider
         .state('home', {
             url: '/',
             component: 'homePage',
             resolve: {
                 uib: regModuleAsync(require('bundle-loader?lazy!angular-ui-bootstrap')),
-                tile: regComponentAsync($compileProvider, require('bundle-loader?lazy!./comp/tile/base')),
-                // card: regComponentAsync($compileProvider, require('bundle-loader?lazy!./comp/card/base')),
-                eventFired: regComponentAsync($compileProvider, require('bundle-loader?lazy!./modals/eventFired/base')),
-                home: regComponentAsync($compileProvider, require('bundle-loader?lazy!./pages/home/base')),
+                tile: regComponentAsync(require('bundle-loader?lazy!./comp/tile/base')),
+                // card: regComponentAsync(require('bundle-loader?lazy!./comp/card/base')),
+                eventFired: regComponentAsync(require('bundle-loader?lazy!./modals/eventFired/base')),
+                home: regComponentAsync(require('bundle-loader?lazy!./pages/home/base')),
             }
         })
         .state('login', {
             url: '/login/',
             component: 'loginPage',
             resolve: {
-                login: regComponentAsync($compileProvider, require('bundle-loader?lazy!./pages/login/base')),
+                login: regComponentAsync(require('bundle-loader?lazy!./pages/login/base')),
             }
         })
         .state('register', {
             url: '/register/',
             component: 'registerPage',
             resolve: {
-                register: regComponentAsync($compileProvider, require('bundle-loader?lazy!./pages/register/base')),
+                register: regComponentAsync(require('bundle-loader?lazy!./pages/register/base')),
             }
         })
         .state('cabinet', {
@@ -37,15 +37,24 @@ export default function ($compileProvider, $stateProvider) {
             component: 'cabinetPage',
             resolve: {
                 auth: redirectToLoginIfNotAuth,
-                cabinet: regComponentAsync($compileProvider, require('bundle-loader?lazy!./pages/cabinet/base')),
+                cabinet: regComponentAsync(require('bundle-loader?lazy!./pages/cabinet/base')),
             }
         })
         .state('cameraTest', {
             url: '/camera_test/',
             component: 'cameraTestPage',
             resolve: {
-                camera: regComponentAsync($compileProvider, require('bundle-loader?lazy!./comp/camera/base')),
-                cameraTest: regComponentAsync($compileProvider, require('bundle-loader?lazy!./pages/cameraTest/base')),
+                camera: regComponentAsync(require('bundle-loader?lazy!./comp/camera/base')),
+                cameraTest: regComponentAsync(require('bundle-loader?lazy!./pages/cameraTest/base')),
+            }
+        })
+        .state('mail', {
+            url: '/mail/',
+            component: 'mailPage',
+            resolve: {
+                mail: regComponentAsync(require('bundle-loader?lazy!./pages/mail/base')),
+                chatsList: regComponentAsync(require('bundle-loader?lazy!./comp/chatsList/base')),
+                conversation: regComponentAsync(require('bundle-loader?lazy!./comp/conversation/base')),
             }
         });
 }

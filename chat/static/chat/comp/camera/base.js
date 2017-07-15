@@ -6,9 +6,9 @@ import './base.less'
 import template from './base.html'
 import controller from './ctrl'
 
-export default function camera($compileProvider) {
+export default function camera() {
 
-    $compileProvider.component('camera', {
+    window.$compileProvider.component('camera', {
         bindings: {
             changeSourceBtn: '<',
             chooseSourceBtn: '<'

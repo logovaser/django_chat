@@ -6,13 +6,10 @@ import './base.less'
 import template from './base.html'
 import controller from './ctrl'
 
-export default function card() {
-
-    window.$compileProvider.component('card', {
+export default function conversation() {
+    window.$compileProvider.component('conversation', {
         bindings: {
-            heading: '@',
-            text: '@',
-            imgSrc: '@'
+            current: '<'
         },
         template,
         controller

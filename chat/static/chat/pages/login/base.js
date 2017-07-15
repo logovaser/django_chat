@@ -5,6 +5,6 @@
 import template from './base.html'
 import controller from './ctrl'
 
-export default function loginPage($compileProvider) {
-    $compileProvider.component('loginPage', {template, controller});
+export default function loginPage() {
+    window.$compileProvider.component('loginPage', {template, controller});
 }

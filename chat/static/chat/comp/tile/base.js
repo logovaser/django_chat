@@ -6,9 +6,9 @@ import './base.less'
 import template from './base.html'
 import controller from './ctrl'
 
-export default function tile($compileProvider) {
+export default function tile() {
 
-    $compileProvider.component('tile', {
+    window.$compileProvider.component('tile', {
         bindings: {
             heading: '@',
             text: '@',

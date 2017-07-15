@@ -4,7 +4,7 @@
 
 import template from './base.html'
 
-export default function cabinetPage($compileProvider) {
+export default function cabinetPage() {
 
-    $compileProvider.component('cabinetPage', {template});
+    window.$compileProvider.component('cabinetPage', {template});
 }
