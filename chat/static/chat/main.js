@@ -12,7 +12,7 @@ import ngCookies from 'angular-cookies'
 import ocLazyLoad from 'oclazyload/dist/modules/ocLazyLoad.core'
 import 'oclazyload/dist/modules/ocLazyLoad.loaders.core'
 
-import messagesFactory from './messagesFactory'
+import chatService from './chatService'
 import userFactory from './userFactory'
 import Routes from './routes'
 import httpCsrfInterceptor from './httpCsrfInterceptor'
@@ -29,10 +29,16 @@ app.config(['$compileProvider', '$stateProvider', '$locationProvider', '$httpPro
         httpCsrfInterceptor($http);
     }]);
 
-app.factory('messagesFactory', messagesFactory);
+app.service('chatService', chatService);
 app.factory('userFactory', userFactory);
 
-app.controller('headerCtrl', ['$scope', function ($scope) {
+app.controller('headerCtrl', ['$scope', 'userFactory', function ($scope, userFactory) {
 
+    $scope.user = userFactory.user;
+
+    $scope.logout = function (e) {
+        e.preventDefault();
+        userFactory.logout();
+    };
 
 }]);

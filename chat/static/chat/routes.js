@@ -52,9 +52,11 @@ export default function ($stateProvider) {
             url: '/mail/',
             component: 'mailPage',
             resolve: {
+                uib: regModuleAsync(require('bundle-loader?lazy!angular-ui-bootstrap')),
                 mail: regComponentAsync(require('bundle-loader?lazy!./pages/mail/base')),
                 chatsList: regComponentAsync(require('bundle-loader?lazy!./comp/chatsList/base')),
                 conversation: regComponentAsync(require('bundle-loader?lazy!./comp/conversation/base')),
+                findUser: regComponentAsync(require('bundle-loader?lazy!./modals/findUser/base')),
             }
         });
 }

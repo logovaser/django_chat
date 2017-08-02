@@ -2,10 +2,33 @@
  * Created by logov on 04-May-17.
  */
 
-export default ['$http', '$cookies', function ($http, $cookies) {
+export default ['$http', '$cookies', '$state', function ($http, $cookies, $state) {
 
-    let setAuth = function () {
-        $cookies.put('isAuthenticated', 'true');
+    let user = {
+        username: ''
+    };
+
+    let setAuth = function (isAuthenticated = true) {
+        $cookies.put('isAuthenticated', isAuthenticated);
+    };
+
+    let login = function (form, redirect = 'cabinet') {
+        $http.post('/ajax/login/', form).then(res => {
+            let data = res.data;
+            if (data.type === 'success') {
+                setAuth();
+                angular.copy(res.data.user, user);
+                $state.go(redirect);
+            }
+        });
+    };
+
+    let logout = function (redirect = 'login') {
+        $http.get('/ajax/logout/').then(res => {
+            setAuth(200);
+            user.username = '';
+            $state.go(redirect);
+        });
     };
 
     let isAuthenticated = function () {
@@ -13,6 +36,7 @@ export default ['$http', '$cookies', function ($http, $cookies) {
         return $http.get('/ajax/check/').then(
             res => {
                 $cookies.put('isAuthenticated', res.data.type === 'success');
+                angular.copy(res.data.user, user);
             },
             err => {
                 $cookies.put('isAuthenticated', 'false');
@@ -21,8 +45,15 @@ export default ['$http', '$cookies', function ($http, $cookies) {
             });
     };
 
+
+    isAuthenticated();
+
+
     return {
+        login,
+        logout,
         isAuthenticated,
-        setAuth,
+
+        user,
     }
 }]

@@ -1,1 +1,19 @@
-<div ng-repeat="message in $ctrl.current.messages">{{ message.text }}</div>
+<nav>
+    <button type="button" ng-click="$ctrl.addUsersClick()">Add users</button>
+</nav>
+
+<div class="messages">
+    <div class="message"
+         ng-class="'message-' + message.status"
+         ng-repeat="message in $ctrl.current.messages">
+        {{ message.text }}
+    </div>
+
+</div>
+
+<form class="message-constructor-form"
+      ng-submit="$ctrl.sendMessage($ctrl.newMessage)">
+    <input class="message-text"
+           ng-model="$ctrl.newMessage.text">
+    <button>send</button>
+</form>

@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <h4 class="modal-title">Find user</h4>
+</div>
+<div class="modal-body find-user-modal-body">
+    <div>
+        <input class="form-control" ng-model="searchPhrase">
+    </div>
+    <div>
+        <div class="search-result"
+             ng-repeat="result in searchResults">
+            <div class="search-result-text">{{ result.username }}</div>
+            <button type="button" class="btn btn-sm btn-default"
+                    ng-click="addUser(result)"
+                    ng-show="result.type === RESULT_TYPES.DEFAULT">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+            <button type="button" class="btn btn-sm btn-default"
+                    ng-click="removeUser(result)"
+                    ng-show="result.type === RESULT_TYPES.ADDED">
+                <span class="glyphicon glyphicon-minus"></span>
+            </button>
+            <button type="button" disabled class="btn btn-sm btn-default"
+                    ng-show="result.type === RESULT_TYPES.PENDING">
+                <span class="glyphicon glyphicon-ok"></span>
+            </button>
+        </div>
+    </div>
+</div>

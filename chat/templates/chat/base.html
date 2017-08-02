@@ -10,13 +10,18 @@
 </head>
 <body ng-app="myApp">
 
-<header>
+<header ng-controller="headerCtrl">
     <div class="header-item">Heading</div>
+
+    <div>{% verbatim %}
+        {{ user.username }}
+    {% endverbatim %}</div>
+    <a href="#" ng-click="logout($event)">logout</a>
 </header>
 
 <ui-view></ui-view>
 
-<footer ng-controller="headerCtrl">
+<footer>
     <a ui-sref="home" class="footer-item"><img src="{% static 'chat/house.svg' %}"></a>
     <a ui-sref="cameraTest" class="footer-item"><img src="{% static 'chat/photo-camera.svg' %}"></a>
     <a ui-sref="cabinet" class="footer-item"><img src="{% static 'chat/avatar.svg' %}"></a>

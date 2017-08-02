@@ -9,7 +9,9 @@ import controller from './ctrl'
 export default function chatsList() {
 
     window.$compileProvider.component('chatsList', {
-        bindings: {},
+        bindings: {
+            chats: '<'
+        },
         template,
         controller
     });

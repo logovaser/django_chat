@@ -119,3 +119,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'chat/res'),
     os.path.join(BASE_DIR, 'var/static/'),
 ]
+
+AUTH_USER_MODEL = "auth.User"
