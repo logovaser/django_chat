@@ -1,5 +1,6 @@
 node_modules
 .idea
+.ssh
 var
 package-lock.json
 *.sqlite3

@@ -3,7 +3,6 @@
  */
 
 import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-material-design/dist/css/bootstrap-material-design.css'
 import './base.less'
 
 import angular from 'angular'

@@ -1,0 +1,12 @@
+version: '2'
+services:
+   web:
+     build:
+      context: .
+      dockerfile: DockerFile
+     volumes:
+       - .:/code
+       - ../pycharm:/root/.pycharm_helpers
+     ports:
+       - "8080:8080"
+       - "22:22"

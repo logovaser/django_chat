@@ -13,9 +13,13 @@ export default ['$scope', '$http', function ($scope, $http) {
     $scope.newChatClick = function () {
         let chatName = prompt('Enter chat name');
 
-        $http.post('/ajax/chats/create/', {
-            name: chatName
-        });
+        $http.post('/ajax/chats/create/', {name: chatName})
+            .then(res => {
+                $scope.chats.push({
+                    id: res.data,
+                    name: chatName
+                })
+            });
     };
 
     $scope.$on('chatClick', (e, chat) => {

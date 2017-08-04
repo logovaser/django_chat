@@ -1,0 +1,20 @@
+FROM python:3.6.1
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PYTHONUNBUFFERED 1
+
+RUN apt-get update && apt-get install -y openssh-server gettext node-less uni2ascii && rm -rf /var/lib/apt/lists/*
+RUN mkdir /var/run/sshd \
+    && echo "export VISIBLE=now" >> /etc/profile \
+    && echo "    RSAAuthentication yes" >> /etc/ssh/ssh_config \
+    && echo "    PubkeyAuthentication yes" >> /etc/ssh/ssh_config \
+    && echo "    AuthorizedKeysFile   .ssh/authorized_keys" >> /etc/ssh/ssh_config
+
+RUN mkdir /code
+WORKDIR /code
+COPY .ssh/id_rsa.pub /root/.ssh/authorized_keys
+ADD requirements.txt /code/
+RUN pip install -r requirements.txt
+
+EXPOSE 22
+EXPOSE 8080
+CMD ["/usr/sbin/sshd", "-D"]

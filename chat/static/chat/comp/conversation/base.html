@@ -1,5 +1,8 @@
 <nav>
-    <button type="button" ng-click="$ctrl.addUsersClick()">Add users</button>
+    <button type="button" class="btn btn-default"
+            ng-click="$ctrl.addUsersClick()">
+        <span class="glyphicon glyphicon-user"></span>
+    </button>
 </nav>
 
 <div class="messages">
@@ -13,7 +16,14 @@
 
 <form class="message-constructor-form"
       ng-submit="$ctrl.sendMessage($ctrl.newMessage)">
-    <input class="message-text"
-           ng-model="$ctrl.newMessage.text">
-    <button>send</button>
+    <div class="input-group">
+            <span class="input-group-btn">
+                <button class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+            </span>
+        <input class="form-control"
+               ng-model="$ctrl.newMessage.text">
+        <span class="input-group-btn">
+                <button class="btn btn-warning"><span class="glyphicon glyphicon-flash"></span></button>
+            </span>
+    </div>
 </form>

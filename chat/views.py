@@ -92,7 +92,7 @@ def add_user(request):
 
 
 def messages(request, pk):
-    chat_messages = Message.objects.filter(chat_id=pk)
+    chat_messages = Chat.objects.get(id=pk).messages.all()
 
     result = {
         'messages': []
@@ -108,7 +108,9 @@ def messages(request, pk):
 def send_message(request):
     post = json.loads(request.body)
 
-    Message.objects.create(text=post['text'], chat_id=post['chat_id'], author_id=request.user.id)
+    add_to_chat = Chat.objects.get(id=post['chat_id'])
+    new_message = Message.objects.create(text=post['text'], author_id=request.user.id)
+    add_to_chat.messages.add(new_message)
 
     return HttpResponse(status=200)
 
@@ -124,7 +126,7 @@ def create_chat(request):
     user_info.chats.add(new_chat)
     user_info.save()
 
-    return HttpResponse(status=200)
+    return HttpResponse(new_chat.id)
 
 
 def find_user(request, keyword):
