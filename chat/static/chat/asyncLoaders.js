@@ -26,6 +26,7 @@ let registeredNames = [];
 export function regModuleAsync(load) {
     return ['$q', '$ocLazyLoad', ($q, $ocLazyLoad) => $q(res => {
         load(data => {
+            if (data.default) data = data.default;
             if (!registeredNames.includes(data)) {
                 registeredNames.push(data);
                 $ocLazyLoad.inject(data);

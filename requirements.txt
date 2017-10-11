@@ -1,2 +1,2 @@
 django==1.11.4
-channels
+git+https://gitlab.kitway.com.ua/kit-base-django/web-chat@master

@@ -1,6 +1,8 @@
-<div class="mail-wrapper">
-    <chats-list chats="chats"></chats-list>
-    <conversation ng-repeat="chat in chats"
-                  ng-show="chat.is_active"
-                  current="chat"></conversation>
+<div class="container">
+    <chat template-url="/django_web_chat/default_template"
+          ng-if="loaded"
+          rooms="context.rooms"
+          recent-messages-url="{{context.urls.get_recent_messages}}"></chat>
+    <span ng-bind="context"></span>
+    <span ng-bind="context.urls.default_template">{{context.urls.default_template}}</span>
 </div>

@@ -3,13 +3,13 @@ import json
 from django.contrib.auth import authenticate, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import login as auth_login
-from django.core.serializers import serialize
+from django.urls import reverse
 
-from .models import Chat, Message, UserInfo
+from django_web_chat.models import ChatUser
+
 from .utils import get_user_info
 
 
@@ -39,103 +39,38 @@ def login(request):
 
 def register(request):
     post = json.loads(request.body)
-    user = User.objects.create_user(username=post['login'], password=post['password'])
-    UserInfo.objects.create(user_id=user.id)
+    User.objects.create_user(username=post['login'], password=post['password'])
     return JsonResponse({'type': 'success'})
 
 
+@login_required
 def logout(request):
     auth_logout(request)
     return HttpResponse(status=200)
 
 
-def chats(request):
-    user_info = request.user.user_info
+@login_required
+def mail_page_context(request):
+    if request.user.is_authenticated() and ChatUser.objects.filter(user=request.user, is_deleted=False).exists():
+        chat_user = ChatUser.objects.get(user=request.user)
+        room_objs = [m.room for m in chat_user.room_memberships.all().prefetch_related('room')]
+    else:
+        room_objs = []
+
+    rooms = [{
+        'id': room.id,
+        'name': room.name,
+        'status': 'inactive'
+    } for room in room_objs]
+    if rooms:
+        rooms[0]['status'] = 'active'
 
     result = {
-        'chats': []
+        'urls': {
+            'default_template': reverse('django_web_chat:default-template'),
+            'get_recent_messages': reverse('django_web_chat:get-recent-messages', args=(1234567890, )),
+        },
+        'rooms': rooms,
     }
-    for chat in user_info.chats.all():
-        result['chats'].append({
-            'id': chat.id,
-            'name': chat.name
-        })
-    return JsonResponse(result)
-
-
-def add_user(request):
-    post = json.loads(request.body)
-    user_info = request.user.user_info
-    user_to_add = None
-
-    try:
-        add_to_chat = user_info.chats.get(id=post['chat_id'])
-    except ObjectDoesNotExist:
-        return HttpResponse(status=404)
-
-    try:
-        add_to_chat.users.get(id=request.user.id)
-    except ObjectDoesNotExist:
-        return HttpResponse(status=403)
-
-    try:
-        user_to_add = User.objects.get(username=post['username'])
-    except ObjectDoesNotExist:
-        return HttpResponse(status=404)
-
-    add_to_chat.users.add(user_to_add)
-    add_to_chat.save()
-    user_to_add.user_info.chats.add(add_to_chat)
-    user_to_add.save()
-
-    return HttpResponse(status=200)
-
-
-def messages(request, pk):
-    chat_messages = Chat.objects.get(id=pk).messages.all()
-
-    result = {
-        'messages': []
-    }
-    for message in chat_messages:
-        result['messages'].append({
-            'id': message.id,
-            'text': message.text
-        })
-    return JsonResponse(result)
-
-
-def send_message(request):
-    post = json.loads(request.body)
-
-    add_to_chat = Chat.objects.get(id=post['chat_id'])
-    new_message = Message.objects.create(text=post['text'], author_id=request.user.id)
-    add_to_chat.messages.add(new_message)
-
-    return HttpResponse(status=200)
-
-
-def create_chat(request):
-    post = json.loads(request.body)
-
-    user_info = request.user.user_info
-
-    new_chat = Chat.objects.create(name=post['name'])
-    new_chat.users.add(request.user)
-
-    user_info.chats.add(new_chat)
-    user_info.save()
-
-    return HttpResponse(new_chat.id)
-
-
-def find_user(request, keyword):
-    users = User.objects.filter(username__startswith=keyword)[:10]
-    result = {
-        'users': []
-    }
-
-    for user in users:
-        result['users'].append(user.username)
 
     return JsonResponse(result)

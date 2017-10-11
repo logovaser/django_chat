@@ -15,7 +15,7 @@ export default ['$scope', '$element', function ($scope, $element) {
     };
 
     $scope.deviceInfos = [];
-    $scope.selectedVideoSource = {};
+    $scope.selectedVideoSource = null;
 
     let videoElement = $element[0].querySelector('video'),
         _stream;
@@ -24,6 +24,7 @@ export default ['$scope', '$element', function ($scope, $element) {
         $scope.deviceInfos = deviceInfos.filter(info => {
             if (info.kind === 'videoinput') return true;
         });
+        if ($scope.deviceInfos) $scope.selectedVideoSource = $scope.deviceInfos[0];
     }
 
     navigator.mediaDevices.enumerateDevices().then(gotDevices);
@@ -36,30 +37,25 @@ export default ['$scope', '$element', function ($scope, $element) {
         return navigator.mediaDevices.enumerateDevices();
     }
 
-    function start() {
+    function start(selectedVideoSource) {
         if (_stream) _stream.getTracks().forEach(track => track.stop());
+        if (!selectedVideoSource) return;
 
-        let videoSource = $scope.selectedVideoSource.deviceId;
+        let videoSource = selectedVideoSource.deviceId;
         let constraints = {video: {deviceId: videoSource ? {exact: videoSource} : undefined}};
-        navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices)
+        navigator.mediaDevices.getUserMedia(constraints).then(gotStream)
     }
 
-    start();
+    start($scope.selectedVideoSource);
 
     $scope.$watch('selectedVideoSource', start);
 
     $scope.changeSource = function () {
-        let newIndex = -1;
-        for (let i = 0, len = $scope.deviceInfos.length; i < len; i++) {
-            if ($scope.deviceInfos[i].deviceId === $scope.selectedVideoSource.deviceId) {
-                newIndex = i + 1;
-                break;
-            }
-        }
+        let newIndex = $scope.deviceInfos.indexOf($scope.selectedVideoSource);
 
-        console.log(newIndex);
-        if (newIndex > $scope.deviceInfos.length) newIndex = 0;
-        console.log(newIndex);
+        if (newIndex < 0) return;
+        newIndex++;
+        if (newIndex >= $scope.deviceInfos.length) newIndex = 0;
         $scope.selectedVideoSource = $scope.deviceInfos[newIndex];
     };
 

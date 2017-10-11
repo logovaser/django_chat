@@ -2,31 +2,16 @@
  * Created by logov on 17-May-17.
  */
 
-export default ['$scope', '$http', function ($scope, $http) {
+export default ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
 
-    $scope.chats = [];
+    $scope.context = {};
 
-    $http.get('/ajax/chats/').then(res => {
-        $scope.chats = res.data.chats;
-    });
-
-    $scope.newChatClick = function () {
-        let chatName = prompt('Enter chat name');
-
-        $http.post('/ajax/chats/create/', {name: chatName})
-            .then(res => {
-                $scope.chats.push({
-                    id: res.data,
-                    name: chatName
-                })
-            });
-    };
-
-    $scope.$on('chatClick', (e, chat) => {
-
-        $scope.chats.forEach(chat => chat.is_active = false);
-        chat.is_active = true;
-
-    });
+    $http.get('/ajax/mail/context')
+        .then(res => {
+            angular.extend($scope.context, res.data);
+        })
+        .then(res => {
+            $scope.loaded = true;
+        });
 
 }]
