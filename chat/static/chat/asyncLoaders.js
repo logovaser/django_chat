@@ -39,12 +39,15 @@ export function regModuleAsync(load) {
 export function regComponentAsync(load) {
     return ['$q', $q => $q(res => {
         load(data => {
-            let name = data.default.name;
-            if (!registeredNames.includes(name)) {
-                registeredNames.push(name);
-                data.default();
-            }
-            res()
+            regComponent(data.default);
+            res();
         });
     })]
+}
+
+export function regComponent(component) {
+    if (!registeredNames.includes(component.name)) {
+        registeredNames.push(component.name);
+        component();
+    }
 }

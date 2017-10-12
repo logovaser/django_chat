@@ -53,7 +53,7 @@ export default function ($stateProvider) {
             component: 'mailPage',
             resolve: {
                 uib: regModuleAsync(require('bundle-loader?lazy!angular-ui-bootstrap')),
-                django_web_chat: regModuleAsync(require('bundle-loader?lazy!../lib/django_web_chat/default')),
+                // django_web_chat: regModuleAsync(require('bundle-loader?lazy!django_web_chat')),
                 mail: regComponentAsync(require('bundle-loader?lazy!./pages/mail/base')),
             }
         });

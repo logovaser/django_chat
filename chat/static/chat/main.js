@@ -2,7 +2,8 @@
  * Created by Artem on 06.07.2017.
  */
 
-import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-material-design/dist/css/bootstrap-material-design.css'
 import './base.less'
 
 import angular from 'angular'
