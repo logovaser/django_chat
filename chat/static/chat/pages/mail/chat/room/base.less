@@ -1,20 +1,67 @@
-@import "../../../../mixin/_colors";
-@import "../../../../mixin/_flexMixin";
+@import "../../../../mixin/_colors.less";
+@import "../../../../mixin/_flexMixin.less";
 
 room {
   .flex-display();
   .flex-direction(column);
 
+  .svg-message-tail {
+    polygon {
+      fill: @colLight;
+    }
+  }
+
   .room-header {
+    height: 50px;
+    padding: 0 15px;
+    .flex-display();
+    .align-items(center);
+
     background: @colDark;
     color: @colLight;
   }
 
   .room-messages {
+    padding: 15px;
     .flex(1);
+  }
+
+  .room-message {
+    padding: 10px;
+  }
+
+  .room-message-body {
+    padding: 15px;
+
+    background: @colLight;
+  }
+
+  .room-message-meta {
+    margin-left: 5px;
+    float: right;
+
+    color: @colDarkGray;
+    font-size: 0.7em;
+  }
+
+  .room-message-separator {
+    width: 10px;
+  }
+
+  .room-message-author-photo {
+    width: 50px;
+    height: 50px;
+
+    background: center no-repeat;
+    background-size: cover;
   }
 
   .room-controls {
 
+  }
+
+  .room-message-text {
+    height: 60px;
+    resize: none;
   }
 }

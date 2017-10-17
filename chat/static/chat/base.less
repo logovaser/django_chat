@@ -1,5 +1,5 @@
-@import "mixin/_colors";
-@import "mixin/_flexMixin";
+@import "mixin/_colors.less";
+@import "mixin/_flexMixin.less";
 
 * {
   box-sizing: border-box;
@@ -15,7 +15,7 @@ body {
   .flex-direction(column);
 
   height: 100vh;
-  font: 18px Roboto, sans-serief;
+  font-size: 18px;
 
   background: @colGray;
 }
@@ -48,7 +48,7 @@ header {
 ui-view {
   .flex(1);
   overflow: auto;
-  padding: 15px 5px 5px 5px;
+  padding: 15px 0 0 0;
 }
 
 footer {

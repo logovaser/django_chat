@@ -1,4 +1,36 @@
+@import "../../../../mixin/_colors.less";
+@import "../../../../mixin/_flexMixin.less";
+
 rooms-panel {
   display: block;
 
+  .rooms-panel-header {
+    height: 50px;
+    padding: 0 15px;
+    .flex-display();
+    .align-items(center);
+
+    background: @colDark;
+    color: @colLight;
+  }
+
+  .rooms-list-item {
+    padding: 10px 15px;
+
+    background: @colLight;
+  }
+
+  .rooms-list-item-name {
+    overflow: hidden;
+
+    white-space: nowrap;
+  }
+
+  .rooms-list-item-info {
+    overflow: hidden;
+
+    color: @colDarkGray;
+    font-size: 0.7em;
+    white-space: nowrap;
+  }
 }

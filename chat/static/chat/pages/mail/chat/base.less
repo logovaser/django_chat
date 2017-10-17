@@ -1,14 +1,10 @@
-@import "../../../mixin/_colors";
-@import "../../../mixin/_flexMixin";
+@import "../../../mixin/_colors.less";
+@import "../../../mixin/_flexMixin.less";
 
 chat {
-  .flex-display();
+  display: block;
+}
 
-  rooms-panel {
-    .flex(1);
-  }
-
-  room {
-    .flex(3);
-  }
+rooms-panel {
+  width: 300px;
 }

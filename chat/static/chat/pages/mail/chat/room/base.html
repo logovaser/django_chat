@@ -1,9 +1,48 @@
+<svg class="svg-message-tail" hidden>
+    <defs>
+        <polygon id="svg-message-tail" points="0,0 20,0 20,20"></polygon>
+        <polygon id="svg-message-tail-rev" points="0,0 20,0 0,20"></polygon>
+    </defs>
+</svg>
+
 <div class="room-header">
-kek lool
+    kek lool
 </div>
 <div class="room-messages">
-kek
+    <div class="row room-message">
+        <div class="room-message-author-photo" style="background-image:url(/static/chat/user_photo_sample.jpg)"></div>
+        <div class="room-message-separator"></div>
+        <svg height="20" width="20">
+            <use xlink:href="#svg-message-tail"/>
+        </svg>
+        <div class="col room-message-body">
+            <span class="room-message-meta">12.10.2017</span>
+            <span class="room-message-meta">sent</span>
+            The first two lines within main() update the x-position of our far and mid sprites. Notice that we move the
+            far layer to the left by 0.128 pixels while we move the mid layer to the left by 0.64 pixels. To move
+            something to the left we use a negative value while a positive value moves it to the right. Also notice that
+            we moved our sprites by a fraction of a pixel. Pixi’s renderer can store and work with positions using
+            sub-pixel values. This is ideal when you want to nudge things across the screen very slowly.
+        </div>
+    </div>
+    <div class="row room-message">
+        <div class="col room-message-body">
+            <span class="room-message-meta">12.10.2017</span>
+            <span class="room-message-meta">sent</span>
+            Here is the message text.
+        </div>
+        <svg height="20" width="20">
+            <use xlink:href="#svg-message-tail-rev"/>
+        </svg>
+        <div class="room-message-separator"></div>
+        <div class="room-message-author-photo" style="background-image:url(/static/chat/user_photo_sample.jpg)"></div>
+    </div>
 </div>
-<div class="room-controls">
-<button type="button">kek</button>
+<div class="row no-gutters room-controls">
+    <div class="col">
+        <textarea class="form-control room-message-text"></textarea>
+    </div>
+    <div>
+        <button type="button" class="btn btn-outline-primary">Send</button>
+    </div>
 </div>
