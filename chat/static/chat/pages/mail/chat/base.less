@@ -2,6 +2,7 @@
 @import "../../../mixin/_flexMixin.less";
 
 chat {
+  position: relative;
   height: 100%;
   display: block;
 }
@@ -14,4 +15,16 @@ rooms-panel {
 
 room {
   height: 100%;
+}
+
+@media all and (max-width: 720px) {
+
+  rooms-panel {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+
+    background: @colGray;
+  }
 }
