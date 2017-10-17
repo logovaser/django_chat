@@ -1,23 +1,29 @@
 @import "../../../../mixin/_colors.less";
 @import "../../../../mixin/_flexMixin.less";
+@import "../../../../mixin/_resetHref.less";
 
 rooms-panel {
   display: block;
+  border-right: 1px solid @colDarkGray;
 
   .rooms-panel-header {
     height: 50px;
-    padding: 0 15px;
-    .flex-display();
-    .align-items(center);
 
     background: @colDark;
     color: @colLight;
   }
 
+  .rooms-list {
+    overflow: auto;
+  }
+
   .rooms-list-item {
+    .reset-href();
     padding: 10px 15px;
+    display: block;
 
     background: @colLight;
+    border-bottom: 1px solid @colGray;
   }
 
   .rooms-list-item-name {

@@ -14,8 +14,9 @@
     "angular": "latest",
     "angular-cookies": "^1.6.6",
     "angular-ui-bootstrap": "latest",
-    "bootstrap-material-design": "^4.0.0-beta.3",
+    "bootstrap": "^4.0.0-beta",
     "django-channels": "^1.1.8",
+    "font-awesome": "^4.7.0",
     "oclazyload": "latest"
   },
   "devDependencies": {

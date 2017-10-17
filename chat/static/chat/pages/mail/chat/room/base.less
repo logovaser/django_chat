@@ -13,21 +13,19 @@ room {
 
   .room-header {
     height: 50px;
-    padding: 0 15px;
-    .flex-display();
-    .align-items(center);
 
     background: @colDark;
     color: @colLight;
   }
 
   .room-messages {
-    padding: 15px;
+    padding: 0 15px;
     .flex(1);
+    overflow: auto;
   }
 
   .room-message {
-    padding: 10px;
+    margin-bottom: 15px;
   }
 
   .room-message-body {
