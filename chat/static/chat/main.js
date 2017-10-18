@@ -2,8 +2,8 @@
  * Created by Artem on 06.07.2017.
  */
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'font-awesome/css/font-awesome.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'font-awesome/css/font-awesome.min.css'
 import './base.less'
 
 import angular from 'angular'

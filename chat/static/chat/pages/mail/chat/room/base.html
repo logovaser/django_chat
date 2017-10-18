@@ -1,28 +1,15 @@
-<div class="container-fluid">
-    <div class="row align-items-center room-header">
-        <div class="col">header</div>
-        <div class="col-auto">
-            <button type="button" class="btn btn-sm btn-light pull-right"><i class="fa fa-plus"></i></button>
-        </div>
+<div class="room-header">
+    <div class="django_chat-col">header</div>
+    <div>
+        <button type="button">+</button>
     </div>
 </div>
 <div class="room-messages">
     <message ng-repeat="message in messages" message="message"></message>
 </div>
 <br>
-<div class="container-fluid room-controls">
-    <div class="row no-gutters">
-        <button type="button" class="btn btn-lg btn-light col-auto mr-2 px-2" title="Upload">
-            <i class="fa fa-paperclip"></i>
-        </button>
-        <button type="button" class="btn btn-lg btn-light col-auto mr-2 px-2" title="Smile">
-            <i class="fa fa-smile-o"></i>
-        </button>
-        <div class="col">
-            <textarea class="form-control room-message-text"></textarea>
-        </div>
-        <button type="button" class="btn btn-lg btn-light col-auto ml-2 px-4" title="Send">
-            <i class="fa fa-send"></i>
-        </button>
-    </div>
+<div class="room-controls">
+    <button type="button" class="room-controls-btn-upload" title="Upload">U</button>
+    <textarea class="room-message-text"></textarea>
+    <button type="button" class="room-controls-btn-send" title="Send">Send</button>
 </div>

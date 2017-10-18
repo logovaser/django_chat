@@ -1,10 +1,19 @@
 @import "../../../mixin/_colors.less";
 @import "../../../mixin/_flexMixin.less";
 
+// use some bootstrap4-like features
+.django_chat-col {
+  .flex(1);
+}
+
+.django_chat-flex-row-reverse {
+  .flex-direction(row-reverse);
+}
+
 chat {
   position: relative;
   height: 100%;
-  display: block;
+  .flex-display();
 }
 
 rooms-panel {
@@ -15,6 +24,7 @@ rooms-panel {
 
 room {
   height: 100%;
+  .flex(1);
 }
 
 @media all and (max-width: 720px) {
