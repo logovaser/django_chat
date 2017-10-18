@@ -2,8 +2,8 @@
  * Created by logov on 05-May-17.
  */
 
-import {regComponentAsync, regModuleAsync} from './asyncLoaders'
-import {redirectToLoginIfNotAuth} from './redirects'
+import {regComponentAsync, regModuleAsync} from '../_tools/asyncLoaders'
+import {redirectToLoginIfNotAuth} from '../_tools/redirects'
 
 export default function ($stateProvider) {
     $stateProvider
@@ -52,8 +52,8 @@ export default function ($stateProvider) {
             url: '/mail/',
             component: 'mailPage',
             resolve: {
-                uib: regModuleAsync(require('bundle-loader?lazy!angular-ui-bootstrap')),
                 // django_web_chat: regModuleAsync(require('bundle-loader?lazy!django_web_chat')),
+                dwchat: regModuleAsync(require('bundle-loader?lazy!../dwchat/index')),
                 mail: regComponentAsync(require('bundle-loader?lazy!./pages/mail/base')),
             }
         });

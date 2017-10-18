@@ -1,0 +1,62 @@
+@import "../../_tools/mixin/_colors.less";
+@import "../../_tools/mixin/_flexMixin.less";
+@import "../../_tools/mixin/_helpers.less";
+@import "../var.less";
+
+dwchat-room {
+  padding-bottom: 15px;
+  .flex-display();
+  .flex-direction(column);
+
+  .room-fade {
+    position: absolute;
+    top: @headerHeight;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    opacity: 0;
+    visibility: hidden;
+
+    background: @colBlack;
+    transition: visibility 0s .25s, opacity .25s;
+  }
+
+  &.fade-content {
+    .room-fade {
+      visibility: visible;
+      opacity: .3;
+      transition-delay: 0s;
+    }
+  }
+
+  .room-header {
+    padding: 0 15px;
+    height: @headerHeight;
+    .flex-display();
+    .align-items(center);
+
+    background: @colDark;
+    color: @colLight;
+  }
+
+  .room-messages {
+    padding: 0 15px;
+    .flex(1);
+    .flex-display();
+    .flex-direction(column-reverse);
+    overflow: auto;
+  }
+
+  .room-controls {
+    padding: 0 15px;
+    height: 60px;
+    .flex-display();
+  }
+
+  .room-message-text {
+    .flex(1);
+
+    resize: none;
+  }
+}

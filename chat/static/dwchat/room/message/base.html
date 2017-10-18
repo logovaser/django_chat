@@ -1,12 +1,14 @@
-<div class="message-container" ng-class="{'django_chat-flex-row-reverse': $ctrl.message.mine}">
-    <div class="message-author-photo" ng-style="$ctrl.styles.authorPhoto"></div>
-    <div class="message-separator"></div>
+<div><b ng-bind="$ctrl.message.author.name" ng-if="!$ctrl.message.mine"></b></div>
+<div class="message-container" ng-class="{'message-mine': $ctrl.message.mine}">
+    <div style="display:none">
+        <div class="message-author-photo" ng-style="$ctrl.styles.authorPhoto"></div>
+        <div class="message-separator"></div>
+    </div>
     <svg height="20" width="20" class="svg-message-tail">
         <polygon points="0,0 20,0 20,20" ng-if="!$ctrl.message.mine"></polygon>
         <polygon points="0,0 20,0 0,20" ng-if="$ctrl.message.mine"></polygon>
     </svg>
     <div class="django_chat-col message-body">
-        <span class="message-meta" ng-bind="$ctrl.message.meta"></span>
         <span ng-bind="$ctrl.message.text"></span>
         <a href="#" class="message-attachment"
            ng-if="$ctrl.message.attachment">
@@ -15,9 +17,10 @@
                 <i>get</i>
             </div>
             <div class="django_chat-col">
-                <div><b ng-bind="$ctrl.message.attachment.name">File_attachment.jpg</b></div>
-                <div ng-bind="$ctrl.message.attachment.size">5.1 MB</div>
+                <div><b ng-bind="$ctrl.message.attachment.name"></b></div>
+                <div ng-bind="$ctrl.message.attachment.size"></div>
             </div>
         </a>
+        <span class="message-meta" ng-bind="$ctrl.message.meta"></span>
     </div>
 </div>

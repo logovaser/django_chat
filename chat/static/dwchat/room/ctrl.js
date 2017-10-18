@@ -18,19 +18,25 @@ export default ['$scope', '$http', '$timeout', function ($scope, $http, $timeout
                 name: 'Image_file_1.jpg',
                 size: '1.2 MB',
             },
-            author: {},
+            author: {
+                name: 'John Parker',
+            },
             mine: true,
         },
         {
             text: 'things across the screen very slowly.',
             meta: 'sent 12.10.2017',
-            author: {},
+            author: {
+                name: 'Benjamin Buttons',
+            },
             mine: false,
         },
         {
             text: 'while we move the mid layer.',
             meta: 'sent 12.10.2017',
-            author: {},
+            author: {
+                name: 'Kelly o\'Nill',
+            },
             mine: false,
         },
         {
@@ -39,7 +45,9 @@ export default ['$scope', '$http', '$timeout', function ($scope, $http, $timeout
                 name: 'Text_file.docx',
                 size: '0.3 MB',
             },
-            author: {},
+            author: {
+                name: 'John Parker',
+            },
             mine: true,
         },
     ];

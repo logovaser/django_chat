@@ -1,0 +1,44 @@
+@import "../_tools/mixin/_flexMixin.less";
+@import "../_tools/mixin/_colors.less";
+@import "var.less";
+
+// use some bootstrap4-like features
+.django_chat-col {
+  .flex(1);
+}
+
+.django_chat-btn {
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  line-height: 1;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: button;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.btn-icon {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.btn-full {
+  padding: 5px 10px;
+  background: @colDark;
+  color: @colLight;
+}
+
+.btn-hamburger {
+  margin-right: 15px;
+}
+
+@media all and (min-width: @windowWidth_sm) {
+  .hidden-md-up {
+    display: none;
+  }
+}

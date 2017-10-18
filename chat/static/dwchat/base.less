@@ -1,35 +1,38 @@
-@import "../../../mixin/_colors.less";
-@import "../../../mixin/_flexMixin.less";
+@import "../_tools/mixin/_colors.less";
+@import "../_tools/mixin/_flexMixin.less";
 @import "var.less";
 @import "helperClasses.less";
 
-chat {
+dwchat {
   position: relative;
   height: 100%;
   .flex-display();
 }
 
-rooms-panel {
+dwchat-rooms-panel {
   width: @roomsPanelWidth;
   height: 100%;
   overflow-y: auto;
 }
 
-room {
+dwchat-room {
   height: 100%;
   .flex(1);
 }
 
 @media all and (max-width: (@windowWidth_sm - 1)) {
 
-  rooms-panel {
+  dwchat-rooms-panel {
     position: absolute;
-    top: 0;
+    top: @headerHeight;
     bottom: 0;
     left: 0;
+    height: auto;
     z-index: 1000;
 
     background: @colGray;
+    border-top: 1px solid @colBlack;
+    transition: left .25s ease;
 
     &.collapsed {
       left: -@roomsPanelWidth;

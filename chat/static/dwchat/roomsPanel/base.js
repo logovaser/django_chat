@@ -6,6 +6,4 @@ import './base.less'
 import template from './base.html'
 import controller from './ctrl'
 
-export default function mailPage() {
-    window.$compileProvider.component('mailPage', {template, controller});
-}
+export default {template, controller}
