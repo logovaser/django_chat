@@ -1,10 +1,15 @@
 @import "../../../../../mixin/_colors.less";
 @import "../../../../../mixin/_flexMixin.less";
 @import "../../../../../mixin/_helpers.less";
+@import "../../var.less";
 
 message {
   margin-bottom: 15px;
-  .flex-display();
+  display: block;
+
+  .message-container {
+    .flex-display();
+  }
 
   .message-body {
     padding: 15px;
@@ -51,6 +56,12 @@ message {
       background: rgba(0, 0, 0, .3);
       color: @colLight;
       font-size: 24px;
+    }
+  }
+
+  @media all and (max-width: (@windowWidth_sm - 1)) {
+    .svg-message-tail {
+      display: none;
     }
   }
 }

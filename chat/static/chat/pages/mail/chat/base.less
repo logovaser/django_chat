@@ -1,14 +1,7 @@
 @import "../../../mixin/_colors.less";
 @import "../../../mixin/_flexMixin.less";
-
-// use some bootstrap4-like features
-.django_chat-col {
-  .flex(1);
-}
-
-.django_chat-flex-row-reverse {
-  .flex-direction(row-reverse);
-}
+@import "var.less";
+@import "helperClasses.less";
 
 chat {
   position: relative;
@@ -17,7 +10,7 @@ chat {
 }
 
 rooms-panel {
-  width: 300px;
+  width: @roomsPanelWidth;
   height: 100%;
   overflow-y: auto;
 }
@@ -27,14 +20,19 @@ room {
   .flex(1);
 }
 
-@media all and (max-width: 720px) {
+@media all and (max-width: (@windowWidth_sm - 1)) {
 
   rooms-panel {
     position: absolute;
     top: 0;
     bottom: 0;
+    left: 0;
     z-index: 1000;
 
     background: @colGray;
+
+    &.collapsed {
+      left: -@roomsPanelWidth;
+    }
   }
 }
