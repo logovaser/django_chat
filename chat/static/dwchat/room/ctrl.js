@@ -2,7 +2,7 @@
  * Created by logov on 17-May-17.
  */
 
-export default ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
+export default ['$scope', '$http', 'roomService', function ($scope, $http, roomService) {
 
     $scope.context = {};
 
