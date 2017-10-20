@@ -2,16 +2,46 @@
  * Created by logov on 17-May-17.
  */
 
-export default ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
+export default ['$scope', 'chatService', 'roomFactory', function ($scope, chatService, roomFactory) {
 
-    $scope.context = {};
+    roomFactory
+        .$on('new_room', function () {
 
-    $http.get('/ajax/mail/context')
-        .then(res => {
-            angular.extend($scope.context, res.data);
         })
-        .then(res => {
-            $scope.loaded = true;
+        .$on('removed_room', function () {
+
+        })
+        .$on('closed_room', function () {
+
+        })
+        .$on('edited_room', function () {
+
+        })
+        .$on('error', function () {
+
         });
+
+
+    /**
+     * test data
+     */
+    $scope.rooms = [
+        {
+            name: 'Loany DEV\'s room',
+            info: 'Tony: hey there',
+        },
+        {
+            name: 'Helpman DEV\'s room',
+            info: 'Adam: nope, it doesn\'t fit here because of some unpredictable situations',
+        },
+        {
+            name: 'My room',
+            info: 'kek',
+        },
+        {
+            name: 'Blah blah blah chat with very long name',
+            info: 'Tony is typing...',
+        },
+    ];
 
 }]

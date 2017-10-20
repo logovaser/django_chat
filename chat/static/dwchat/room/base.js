@@ -6,4 +6,10 @@ import './base.less'
 import template from './base.html'
 import controller from './ctrl'
 
-export default {template, controller}
+export default {
+    bindings: {
+        room_id: '<',
+    },
+    template,
+    controller
+}

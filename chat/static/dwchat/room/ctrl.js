@@ -2,10 +2,26 @@
  * Created by logov on 17-May-17.
  */
 
-export default ['$scope', '$http', 'roomService', function ($scope, $http, roomService) {
+export default ['$scope', 'roomService', 'roomFactory', function ($scope, roomService, roomFactory) {
 
-    $scope.context = {};
+    roomFactory
+        .$on('new_message', function () {
 
+        })
+        .$on('deleted_message', function () {
+
+        })
+        .$on('edited_message', function () {
+
+        })
+        .$on('error', function () {
+
+        });
+
+
+    /**
+     * test data
+     */
     $scope.messages = [
         {
             text: 'The first two lines within main() update the x-position of our far and mid sprites. Notice that we move the\n' +
@@ -51,13 +67,5 @@ export default ['$scope', '$http', 'roomService', function ($scope, $http, roomS
             mine: true,
         },
     ];
-
-    $http.get('/ajax/mail/context')
-        .then(res => {
-            angular.extend($scope.context, res.data);
-        })
-        .then(res => {
-            $scope.loaded = true;
-        });
 
 }]

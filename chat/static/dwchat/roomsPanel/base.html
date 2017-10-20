@@ -5,36 +5,9 @@
     </div>
 </div>
 <div class="rooms-list">
-    <a href="#" class="rooms-list-item">
-        <div class="rooms-list-item-name">Loany DEV's room</div>
-        <div class="rooms-list-item-info">Tony: hey there</div>
-    </a>
-    <a href="#" class="rooms-list-item">
-        <div class="rooms-list-item-name">Helpman DEV's room</div>
-        <div class="rooms-list-item-info" title="Adam: nope, it doesn't fit here because of some unpredictable situations">
-            Adam: nope, it doesn't fit here because of some unpredictable situations
-        </div>
-    </a>
-    <a href="#" class="rooms-list-item">
-        <div class="rooms-list-item-name">My room</div>
-        <div class="rooms-list-item-info">kek</div>
-    </a>
-    <a href="#" class="rooms-list-item">
-        <div class="rooms-list-item-name" title="Blah blah blah chat with very long name">
-            Blah blah blah chat with very long name
-        </div>
-        <div class="rooms-list-item-info">Tony is typing...</div>
-    </a>
-    <a href="#" class="rooms-list-item">
-        <div class="rooms-list-item-name" title="Blah blah blah chat with very long name">
-            Blah blah blah chat with very long name
-        </div>
-        <div class="rooms-list-item-info">Tony is typing...</div>
-    </a>
-    <a href="#" class="rooms-list-item">
-        <div class="rooms-list-item-name" title="Blah blah blah chat with very long name">
-            Blah blah blah chat with very long name
-        </div>
-        <div class="rooms-list-item-info">Tony is typing...</div>
+    <a href="#" class="rooms-list-item"
+       ng-repeat="room in rooms">
+        <div class="rooms-list-item-name" ng-bind="room.name"></div>
+        <div class="rooms-list-item-info" ng-bind="room.info"></div>
     </a>
 </div>

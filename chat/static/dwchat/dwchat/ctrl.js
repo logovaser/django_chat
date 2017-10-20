@@ -2,7 +2,7 @@
  * Created by logov on 17-May-17.
  */
 
-export default ['$scope', 'chatService', function ($scope, chatService) {
+export default ['$scope', function ($scope) {
 
     $scope.sidePanel = {
         collapsed: true,
