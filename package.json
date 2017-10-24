@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "django_chat",
   "version": "0.0.1",
   "description": "app",
   "author": "Artem Prudnikov",
@@ -11,10 +11,11 @@
   ],
   "dependencies": {
     "@uirouter/angularjs": "latest",
-    "angular": "latest",
+    "angular": "^1.6.6",
     "angular-cookies": "^1.6.6",
     "angular-ui-bootstrap": "latest",
     "bootstrap": "^4.0.0-beta",
+    "django_web_chat": "git+https://gitlab.kitway.com.ua/kit-base-django/web-chat.git#dev_front",
     "font-awesome": "^4.7.0",
     "ng-file-upload": "^12.2.13",
     "oclazyload": "latest"

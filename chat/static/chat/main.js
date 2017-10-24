@@ -9,6 +9,7 @@ import './base.less'
 import angular from 'angular'
 import uiRouter from '@uirouter/angularjs'
 import ngCookies from 'angular-cookies'
+import ngFileUpload from 'ng-file-upload'
 import ocLazyLoad from 'oclazyload/dist/modules/ocLazyLoad.core'
 import 'oclazyload/dist/modules/ocLazyLoad.loaders.core'
 
@@ -17,7 +18,7 @@ import userFactory from './userFactory'
 import Routes from './routes'
 import httpCsrfInterceptor from './httpCsrfInterceptor'
 
-let app = angular.module('myApp', [uiRouter, ocLazyLoad, ngCookies]);
+let app = angular.module('myApp', [uiRouter, ocLazyLoad, ngCookies, ngFileUpload]);
 
 app.config(['$compileProvider', '$stateProvider', '$locationProvider', '$httpProvider',
     function ($compile, $state, $location, $http) {
