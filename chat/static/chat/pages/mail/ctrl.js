@@ -5,6 +5,6 @@
 export default ['$scope', 'dwchatConfig', function ($scope, dwchatConfig) {
 
     dwchatConfig.urlPrefix = '/django_web_chat';
-    dwchatConfig.wsUrl = '/ws_kek/'
+    dwchatConfig.wsUrl = '/web_chat/';
 
 }]
