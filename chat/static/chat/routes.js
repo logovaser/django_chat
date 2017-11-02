@@ -52,6 +52,7 @@ export default function ($stateProvider) {
             url: '/mail/',
             component: 'mailPage',
             resolve: {
+                auth: redirectToLoginIfNotAuth,
                 // django_web_chat: regModuleAsync(require('bundle-loader?lazy!django_web_chat')),
                 // dwchat: regModuleAsync(require('bundle-loader?lazy!django_web_chat')),
                 dwchat: regModuleAsync(require('bundle-loader?lazy!../../../../web-chat/index')),
