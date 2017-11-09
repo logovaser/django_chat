@@ -15,11 +15,20 @@
 
     <div>{% verbatim %}
         {{ user.username }}
-    {% endverbatim %}</div>
+        {% endverbatim %}
+    </div>
     <a href="#" ng-click="logout($event)">logout</a>
 </header>
 
 <ui-view></ui-view>
+
+{#{% spaceless %}#}
+{#    <iframe src="{% url 'django_web_chat:default-iframe-full-template' %}?url_prefix=&#47;django_web_chat&ws_url_prefix=&#47;web_chat&#47;"#}
+{#            style="position: fixed; top: 0; right: 0;" width="320" height="550"></iframe>#}
+{##}
+{#    <iframe src="{% url 'django_web_chat:default-iframe-room-template' %}?url_prefix=&#47;django_web_chat&ws_url_prefix=&#47;web_chat&#47;&room_id=29"#}
+{#            style="position: fixed; top: 0; left: 0;" width="320" height="550"></iframe>#}
+{#{% endspaceless %}#}
 
 <footer>
     <a ui-sref="home" class="footer-item"><img src="{% static 'chat/house.svg' %}"></a>
